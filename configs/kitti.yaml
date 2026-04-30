@@ -1,0 +1,44 @@
+# KITTI - in-domain evaluation (Section 4)
+dataset: "KITTI"
+dataset_path: "data/prediction_data_val_unc.txt"
+
+seed: 42
+runs: 100
+runs_classification: 1
+split: 0.2
+
+# Per-corner miscoverage levels.
+# alpha_only_regression       -> regression-only experiments (Tables 1, 2; Section 4.1.1, 4.1.2)
+# alpha_regression            -> bbox miscoverage in the two-step pipeline (Table 4; Section 4.1.3)
+# alpha_only_class            -> classification-only experiments (Table 3, Figure 3)
+# alpha_class                 -> class miscoverage in the two-step pipeline
+alpha_only_regression: 0.025
+alpha_regression: 0.05
+alpha_only_class: 0.1
+alpha_class: 0.01
+
+# Thresholds used by the recovery-rate analysis (Figure 2).
+iou_threshold: 0.8
+dc_threshold: 0.8
+threshold:
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+
+# Aleatoric uncertainty estimate(s) used to scale CP intervals.
+# `uncertainty` is the single estimate used by experiments that do not sweep variants
+# (cp_classwise_regression, cp_two_step). `all_uncertainties` is the list swept in
+# the class-agnostic regression experiment to compare LA / Rel. IR / Rel. IR PCo PC.
+uncertainty: "uncalib_albox"
+all_uncertainties:
+  - uncalib_albox
+  - iso_all_albox
+  - rel_iso_perclscoo_albox
+
+save_t_test: True
+
+# RAPS hyperparameters (Section 3.1, classification CP).
+lam_reg: 0.01
+k_reg: 5

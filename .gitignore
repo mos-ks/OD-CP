@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editor / IDE
+.idea/
+.vscode/
+
+# Notebook scratch
+.ipynb_checkpoints/
+.virtual_documents/
+anaconda_projects/
+
+# Generated artifacts (figure SVG/PDF land at the repo root by default)
+*.svg
+results/images/

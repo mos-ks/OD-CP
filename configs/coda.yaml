@@ -1,0 +1,36 @@
+# CODA - cross-domain evaluation (Section 4).
+# The CODA model is the BDD-trained EfficientDet-d0 evaluated on the eight
+# classes shared between BDD and CODA (distribution-shift scenario).
+dataset: "CODA"
+dataset_path: "data/validate_results_CODA.txt"
+
+seed: 42
+runs: 100
+runs_classification: 1
+split: 0.2
+
+alpha_only_regression: 0.025
+alpha_regression: 0.1
+alpha_only_class: 0.1
+alpha_class: 0.01
+
+iou_threshold: 0.5
+dc_threshold: 0.5
+threshold:
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+
+uncertainty: "uncalib_albox"
+all_uncertainties:
+  - uncalib_albox
+  - iso_all_albox
+  - rel_iso_perclscoo_albox
+
+save_t_test: True
+
+# RAPS hyperparameters (Section 3.1, classification CP).
+lam_reg: 0.01
+k_reg: 5
